@@ -1,0 +1,72 @@
+/* Coldwell Banker Select & Plaza — design tokens
+   Paste this :root block at the top of any new tool's stylesheet.
+   These are the exact values used in the live Manager Notices app. */
+
+:root {
+  /* ---- Brand blues (dark → light) ---- */
+  --cb-blue: #012169; /* PRIMARY. Coldwell Banker navy. Buttons, active states, headings */
+  --midnight: #0a1730; /* near-black navy — toasts, deep backgrounds */
+  --slate: #1b3c55; /* muted steel-navy — hero gradient tail */
+  --smoky: #58718d; /* secondary text, muted labels */
+  --glacier: #dae1e8; /* hairline borders, dividers */
+  --mist: #becad7; /* subtle borders */
+  --tide: #b8cfea; /* light blue accents on dark, selection */
+  --icy: #f0f5fb; /* app background, subtle fills */
+  --bright: #1f69ff; /* vivid action blue — links, numbered steps */
+  --celestial: #418fde; /* focus ring, hover accents */
+  --white: #fff;
+  --ink: #0c1320; /* primary text */
+
+  /* ---- Accent (Coldwell Banker secondary) ---- */
+  --gold: #c8a44d; /* CB gold — top accent bars, the "& Plaza" wordmark */
+
+  /* ---- Category accents (used as card left-bar + dot) ---- */
+  --cat-birthday: #3e9be0; /* blue */
+  --cat-anniversary: #c2982e; /* gold */
+  --cat-closing: #1f9d57; /* green */
+  --cat-license: #d68a1e; /* orange */
+
+  /* ---- Status ---- */
+  --danger: #a5281b; /* alerts, expired */
+  --danger-line: #f1c3bd;
+  --success: #3c6b46;
+
+  /* ---- Type roles ---- */
+  --display: 'Bauziet', 'Familjen Grotesk', 'Helvetica Neue', Arial, sans-serif; /* headings, UI */
+  --stat: 'Geometos Neue', 'Josefin Sans', sans-serif; /* numbers, count pills, eyebrows */
+  --body: 'Roboto', 'Helvetica Neue', Arial, sans-serif; /* paragraphs */
+
+  /* ---- Shape & depth ---- */
+  --r: 14px; /* default card radius */
+  --shadow: 0 1px 2px rgba(1, 33, 105, 0.06), 0 8px 24px rgba(1, 33, 105, 0.07);
+  --shadow-lg: 0 24px 60px -12px rgba(1, 33, 105, 0.28);
+
+  /* ---- Motion ---- */
+  --ease: cubic-bezier(0.4, 0, 0.2, 1); /* drawers, large transitions */
+  --t-fast: 0.15s; /* hovers, taps */
+}
+
+/* Baseline element defaults that pair with the tokens */
+body {
+  font-family: var(--body);
+  color: var(--ink);
+  background: var(--icy);
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: rgba(1, 33, 105, 0.08);
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  color: inherit;
+}
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+::selection {
+  background: var(--tide);
+}
