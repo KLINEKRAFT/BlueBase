@@ -381,19 +381,17 @@ export const brokerOpens: BrokerOpen[] = [
     image: photos.house3,
     host: 'Morgan Blake',
     sponsor: 'Prairie Closing Partners · Coffee & conversation',
-    listings: listingSeeds
-      .slice(0, 5)
-      .map((_, i) => ({
-        id: `w${i}`,
-        address: `${2100 + i * 120} N Prairie Lane`,
-        price: 410000 + i * 45000,
-        agent: ['Morgan Blake', 'Jamie Cole', 'Avery Fox', 'Casey Lane', 'Drew West'][i],
-        brokerage: i === 3 ? 'Independent demo brokerage' : 'Coldwell Banker Plaza',
-        time: `${10 + Math.floor(i / 3)}:${['00', '20', '40'][i % 3]} AM`,
-        image: [photos.house3, photos.house2, photos.house][i % 3],
-        beds: 3 + (i % 2),
-        baths: 2,
-      })),
+    listings: listingSeeds.slice(0, 5).map((_, i) => ({
+      id: `w${i}`,
+      address: `${2100 + i * 120} N Prairie Lane`,
+      price: 410000 + i * 45000,
+      agent: ['Morgan Blake', 'Jamie Cole', 'Avery Fox', 'Casey Lane', 'Drew West'][i],
+      brokerage: i === 3 ? 'Independent demo brokerage' : 'Coldwell Banker Plaza',
+      time: `${10 + Math.floor(i / 3)}:${['00', '20', '40'][i % 3]} AM`,
+      image: [photos.house3, photos.house2, photos.house][i % 3],
+      beds: 3 + (i % 2),
+      baths: 2,
+    })),
   },
 ];
 const eventSeeds: [string, Event['type'], string, string, string][] = [

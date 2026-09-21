@@ -67,18 +67,6 @@ export function Production({
     gci: ytd.gci,
     wealth: wealth.ytd,
   };
-  function exportData() {
-    const csv = [
-      'Date,Address,Status,Side,Volume',
-      ...transactions.map((t) => `${t.date},"${t.address}",${t.status},${t.side},${t.price}`),
-    ].join('\n');
-    const url = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'bluebase-demo-production-2026.csv';
-    a.click();
-    URL.revokeObjectURL(url);
-  }
   return (
     <>
       <PageHeading
@@ -86,10 +74,15 @@ export function Production({
         title={`Good morning, ${profile.name.split(' ')[0]}.`}
         description="Here’s how your business is tracking."
       >
-        <button className="btn secondary export" onClick={exportData}>
+        <a
+          className="btn secondary export"
+          aria-label="Export report"
+          href="/api/production-export"
+          download
+        >
           <Download size={16} />
           Export report
-        </button>
+        </a>
       </PageHeading>
       <div className="identity-row">
         <img src={profile.avatar} alt="Demo agent portrait" />

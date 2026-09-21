@@ -4,3 +4,5 @@ package-lock.json
 public
 AGENTS.md
 CLAUDE.md
+
+next-env.d.ts
