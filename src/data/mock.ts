@@ -508,7 +508,7 @@ export const notifications: Notification[] = [
   {
     id: 'n4',
     title: 'A new name to know.',
-    detail: 'Ridgeline Roofing joined the trusted vendor collection.',
+    detail: 'Explore the curated Vendor List and share your recommendations.',
     time: 'Yesterday',
     href: '/vendors',
   },

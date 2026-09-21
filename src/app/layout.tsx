@@ -8,6 +8,7 @@ import '@fontsource/roboto/500.css';
 import '@fontsource/josefin-sans/500.css';
 import '@fontsource/josefin-sans/600.css';
 import './globals.css';
+import './vendors.css';
 export const metadata: Metadata = {
   title: 'BlueBase · Your business, together.',
   icons: { icon: '/icon.svg' },

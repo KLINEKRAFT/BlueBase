@@ -1,6 +1,6 @@
 # Implementation architecture
 
-Next.js App Router + React + TypeScript, semantic CSS and Lucide icons. Fonts and photos are local assets. There is no chart runtime dependency, no backend and no environment-specific configuration.
+Next.js App Router + React + TypeScript, semantic CSS and Lucide icons. Fonts and photos are local assets. There is no chart runtime dependency. The Vendor List now has Node route handlers and a local SQLite persistence adapter; see [Vendor List architecture](VENDOR_DIRECTORY.md). Other modules remain browser-only fixtures.
 
 ## Boundaries
 
@@ -28,6 +28,6 @@ The Wealth Builder balance is opening balance $47,420 plus $21,000 confirmed con
 
 ## Deployment
 
-Standard Next.js Vercel project, Node >=20.9, `npm ci`, `npm run build`. No production deployment is part of this change. Public preview deployments expose all fictional data by design; do not substitute real data until authentication, authorization and RLS are implemented.
+Next.js project, Node >=24, `npm ci`, `npm run build`. Vendor List requires a persistent Node filesystem; its local SQLite adapter is disabled on Vercel until a hosted database adapter is connected. No production deployment is part of this change. Public preview deployments expose all fictional data by design; do not substitute real data until authentication, authorization and RLS are implemented.
 
 The optional CSV export uses a same-origin, read-only route handler at `/api/production-export` with attachment headers. It serializes only the centralized fictional transaction fixture. This public demo endpoint must gain server-side authentication and row-level authorization before ever reading real production data.

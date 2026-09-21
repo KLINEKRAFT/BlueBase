@@ -1,5 +1,6 @@
 'use client';
 import { createContext, useContext, useEffect, useState } from 'react';
+import { clearDirectoryCache } from './vendors/use-directory';
 interface Session {
   agentId: string;
   mode: 'demo';
@@ -71,6 +72,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         },
         signOut: async () => {
           await demoAuth.signOut();
+          clearDirectoryCache();
+          void fetch('/api/vendor-directory/session', { method: 'DELETE' }).catch(() => {});
           setSession(null);
         },
       }}
