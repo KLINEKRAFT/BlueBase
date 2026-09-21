@@ -25,12 +25,13 @@ import {
   Home,
 } from 'lucide-react';
 import { AuthProvider, useAuth } from '@/lib/auth';
-import { agent, tools, vendors, events, notifications, SNAPSHOT } from '@/data/mock';
+import { agent, tools, events, notifications, SNAPSHOT } from '@/data/mock';
 import type { AgentProfile, Event } from '@/lib/types';
 import { Brand, Modal, useStoredState, Empty } from './ui';
 import { Production } from './production';
 import { Wealth } from './wealth';
 import { Vendors } from './vendors';
+import { useDirectory } from '@/lib/vendors/use-directory';
 import { Events, EventDetail } from './events';
 import { Tools, Profile, Settings, Resources } from './account';
 const nav = [
@@ -217,6 +218,7 @@ function Login() {
 }
 function Workspace() {
   const { session, ready, signOut } = useAuth();
+  const directory = useDirectory(!!session);
   const pathname = usePathname();
   const params = useSearchParams();
   const router = useRouter();
@@ -299,11 +301,18 @@ function Workspace() {
       keywords: 'goal target volume units gci',
       path: '/production#goals',
     },
-    ...vendors.map((v) => ({
+    ...(directory.data?.vendors || []).map((v) => ({
       id: v.id,
       title: v.name,
       kind: 'Vendor',
-      keywords: v.category + ' ' + v.area,
+      keywords:
+        v.categoryIds
+          .map((id) => directory.data?.categories.find((c) => c.id === id)?.name || id)
+          .join(' · ') +
+        ' · ' +
+        v.markets
+          .map((m) => m.detail || directory.data?.markets.find((a) => a.id === m.id)?.name || m.id)
+          .join(' · '),
       path: '/vendors?search=' + encodeURIComponent(v.name),
     })),
     ...events.map((e) => ({

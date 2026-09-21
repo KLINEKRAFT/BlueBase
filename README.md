@@ -2,11 +2,11 @@
 
 A polished, interactive agent workspace for Coldwell Banker Select and Coldwell Banker Plaza. This first demo brings personal production, goals, Wealth Builder, trusted vendors, and community events into one shared application shell.
 
-**Demo only:** every record is fictional. Browser-based sign-in is not security. No production APIs, Supabase project, email delivery, investment account, or SSO connection is enabled.
+**Demo only:** business descriptions in Vendor List use five real company websites; BlueBase ratings, memberships, referrals, contributions, and all other workspace records are fictional. Browser-based sign-in is not security. No production APIs, Supabase project, email delivery, investment account, or SSO connection is enabled.
 
 ## Run locally
 
-Node.js 20.9+ (Node 24 recommended), npm.
+Node.js 24+, npm. The directory uses built-in Node SQLite.
 
 ```sh
 npm ci
@@ -23,14 +23,14 @@ npm run build
 npm start
 ```
 
-No environment variables are needed. Vercel can import the repository with its Next.js preset, `npm run build`, and the default output. This work does not provision or publish a hosting deployment.
+No environment variables are needed locally. Vendor data persists in `.data/vendor-directory.sqlite` (gitignored). Hosting the directory requires a persistent disk or a database adapter; the API deliberately returns 503 on Vercel rather than pretending an ephemeral SQLite file is durable. Other demo modules remain available. See [Vendor List implementation](docs/VENDOR_DIRECTORY.md) for configuration, source provenance, and the production path. This work does not provision or publish a hosting deployment.
 
 ## What works
 
 - Personal production: YTD/quarter/month views, keyboard-accessible comparative chart, pending pipeline, CSV export, recent activity, annual goals, projected pace, achievement details.
 - Goals, favorites, RSVPs, profile edits, notification read states/preferences, appearance, and period choice persist locally.
 - Wealth Builder: balance history, confirmed/pending contribution filters, contribution history, annual contribution goal, program explanation.
-- Vendor List: 18 fictional partners, 14 categories, area/search filters, favorites, detailed profiles.
+- Vendor List: five sourced company profiles, 38 database-managed categories, multiple markets/categories, search, favorites, contact actions, persisted editable agent ratings and recommendations, contribution eligibility, automatic rating suspension, and a durable notification outbox.
 - Events: 11 upcoming events, list/calendar views, detail dialogs, RSVPs, two Broker Opens with six and five listings, sponsors and illustrative routes.
 - Tools: four working modules and five deliberately labeled future modules.
 - Global Cmd/Ctrl+K search, unread notifications, profile, settings, resources, light/dark/system appearance.
